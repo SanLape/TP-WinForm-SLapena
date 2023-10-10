@@ -12,7 +12,7 @@ namespace Dominio
         public string codArticulo { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public Marcar marcae { get; set; }
+        public Marcar marca { get; set; }
         public Categoria categoria { get; set; }
         public decimal precio { get; set; }  
     }
