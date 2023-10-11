@@ -16,8 +16,8 @@ namespace Negocio
         {
             try
             {
-                // corregit la consulta 
-                string select = "SELECT A.Id, A.Codigo, A.Descripcion, A.IdMarca, M.Descripcion MARCA, A.IdCategoria, C.Descripcion CATEGORIA, A.Precio";
+                // cambiar la consulta
+                string select = "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion MARCA, A.IdCategoria, C.Descripcion CATEGORIA, A.Precio";
                 string from = " FROM ARTICULOS A, CATEGORIAS C, MARCAS M";
                 string where = " WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id";
                 string consutla = select + from + where;
@@ -31,6 +31,7 @@ namespace Negocio
 
                     artAux.id = (int)datos.Lector["Id"];
                     artAux.codArticulo = (string)datos.Lector["Codigo"];
+                    artAux.nombre = (string)datos.Lector["Nombre"];
                     artAux.descripcion = (string)datos.Lector["Descripcion"];
 
                     artAux.marca = new Marcar();
@@ -46,6 +47,34 @@ namespace Negocio
                     lista.Add(artAux);
                 }
                 return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void agregar(Articulo nuevo)
+        {
+            string consutla = "INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES(@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
+            
+            try
+            {
+                datos.setConsulta(consutla);
+
+                datos.setParametro("@Codigo", nuevo.codArticulo);
+                datos.setParametro("@Nombre", nuevo.nombre);
+                datos.setParametro("@Descripcion", nuevo.descripcion);
+                datos.setParametro("@IdMarca", nuevo.marca.id);
+                datos.setParametro("@IdCategoria", nuevo.categoria.id);
+                datos.setParametro("@Precio", nuevo.precio);
+
+                datos.ejecutarAccion();
+
             }
             catch (Exception ex)
             {
