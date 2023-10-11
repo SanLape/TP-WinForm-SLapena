@@ -52,6 +52,12 @@
     <Compile Include="frmAgregarArticulo.Designer.cs">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCategoriaMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategoriaMarca.Designer.cs">
+      <DependentUpon>frmCategoriaMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAgregarArticulo.resx">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategoriaMarca.resx">
+      <DependentUpon>frmCategoriaMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

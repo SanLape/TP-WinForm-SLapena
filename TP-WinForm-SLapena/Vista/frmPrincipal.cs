@@ -38,5 +38,20 @@ namespace Vista
             nuevoArticulo.ShowDialog();
             cargarArticulos();
         }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategoriaMarca categoria = new frmCategoriaMarca(true);
+            categoria.ShowDialog();
+            cargarArticulos();
+
+        }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            frmCategoriaMarca marca = new frmCategoriaMarca(false);
+            marca.ShowDialog();
+            cargarArticulos();
+        }
     }
 }
