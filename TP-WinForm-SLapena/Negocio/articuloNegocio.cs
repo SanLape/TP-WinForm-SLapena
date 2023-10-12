@@ -61,7 +61,7 @@ namespace Negocio
         public void agregar(Articulo nuevo)
         {
             string consutla = "INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES(@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)";
-            
+
             try
             {
                 datos.setConsulta(consutla);
@@ -73,6 +73,27 @@ namespace Negocio
                 datos.setParametro("@IdCategoria", nuevo.categoria.id);
                 datos.setParametro("@Precio", nuevo.precio);
 
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            string consulta = "DELETE FROM ARTICULOS WHERE id = @id";
+
+            try
+            {
+                datos.setConsulta(consulta);
+                datos.setParametro("@id", id);
                 datos.ejecutarAccion();
 
             }

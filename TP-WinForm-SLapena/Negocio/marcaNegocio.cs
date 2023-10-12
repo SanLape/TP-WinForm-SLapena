@@ -11,6 +11,7 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
         List<Marcar> lista = new List<Marcar>();
+        private string consulta; 
 
         public List<Marcar> listar()
         {
@@ -44,7 +45,7 @@ namespace Negocio
         }
         public void agregar(Marcar nueva)
         {
-            string consulta = "INSERT INTO MARCAS(Descripcion) VALUES (@Descripcion)";
+            consulta = "INSERT INTO MARCAS(Descripcion) VALUES (@Descripcion)";
             try
             {
                 datos.setConsulta(consulta);
@@ -53,6 +54,26 @@ namespace Negocio
 
                 datos.ejecutarAccion();
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            consulta = "DELETE FROM MARCAS WHERE id = @id";
+
+            try
+            {
+                datos.setConsulta(consulta);
+                datos.setParametro("@id", id);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

@@ -32,6 +32,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnMarcas = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             // btnCategorias
             // 
-            this.btnCategorias.Location = new System.Drawing.Point(137, 358);
+            this.btnCategorias.Location = new System.Drawing.Point(542, 358);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(118, 50);
             this.btnCategorias.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // btnMarcas
             // 
-            this.btnMarcas.Location = new System.Drawing.Point(261, 358);
+            this.btnMarcas.Location = new System.Drawing.Point(666, 358);
             this.btnMarcas.Name = "btnMarcas";
             this.btnMarcas.Size = new System.Drawing.Size(122, 50);
             this.btnMarcas.TabIndex = 3;
@@ -76,11 +77,22 @@
             this.btnMarcas.UseVisualStyleBackColor = true;
             this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(137, 358);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(119, 51);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "ELIMINAR";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 506);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnMarcas);
             this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.btnAgregar);
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCategorias;
         private System.Windows.Forms.Button btnMarcas;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

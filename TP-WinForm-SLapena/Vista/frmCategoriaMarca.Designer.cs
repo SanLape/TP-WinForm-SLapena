@@ -44,6 +44,7 @@
             this.dgwCatMarca.Location = new System.Drawing.Point(15, 68);
             this.dgwCatMarca.MultiSelect = false;
             this.dgwCatMarca.Name = "dgwCatMarca";
+            this.dgwCatMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwCatMarca.Size = new System.Drawing.Size(318, 190);
             this.dgwCatMarca.TabIndex = 0;
             // 
@@ -74,6 +75,7 @@
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblAgregar
             // 

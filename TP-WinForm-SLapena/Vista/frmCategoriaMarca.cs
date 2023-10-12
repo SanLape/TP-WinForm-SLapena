@@ -22,7 +22,7 @@ namespace Vista
 
         private categoriaNegocio datosCat;
         private marcaNegocio datosMarca;
-        
+
         public frmCategoriaMarca(bool categoria)
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Vista
         }
         private void configurar(bool cat)
         {
-            if(cat)
+            if (cat)
             {
                 this.categoria = cat;
                 lblTitulo.Text = "CATEGORIA ";
@@ -47,17 +47,20 @@ namespace Vista
         }
         private void cargar()
         {
-            if(categoria)
+
+            if (categoria)
             {
                 datosCat = new categoriaNegocio();
                 listaCat = datosCat.listar();
                 dgwCatMarca.DataSource = listaCat;
+                dgwCatMarca.Columns["id"].Visible = false;
             }
             else
             {
                 datosMarca = new marcaNegocio();
                 listaMarcas = datosMarca.listar();
                 dgwCatMarca.DataSource = listaMarcas;
+                dgwCatMarca.Columns["id"].Visible = false;
             }
         }
 
@@ -65,14 +68,14 @@ namespace Vista
         {
             if (categoria)
             {
-                Categoria catNueva =  new Categoria(); 
+                Categoria catNueva = new Categoria();
                 catNueva.nombre = txtAgregar.Text;
 
                 try
                 {
                     datosCat.agregar(catNueva);
                     MessageBox.Show("AGREGADA");
-                    Close();
+                    cargar();
                 }
                 catch (Exception ex)
                 {
@@ -89,7 +92,7 @@ namespace Vista
                 {
                     datosMarca.agregar(marNueva);
                     MessageBox.Show("AGREGADA");
-                    Close();
+                    cargar();
                 }
                 catch (Exception ex)
                 {
@@ -97,6 +100,44 @@ namespace Vista
                     throw ex;
                 }
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (categoria)
+            {
+                Categoria auxCat;
+                auxCat = (Categoria)dgwCatMarca.CurrentRow.DataBoundItem;
+
+                DialogResult respuesta = MessageBox.Show("ELIMINAR CATEGORIA", "ELIMINAR", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    datosCat.eliminar(auxCat.id);
+                    MessageBox.Show("ELIMINADA");
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                Marcar auxMar;
+                auxMar = (Marcar)dgwCatMarca.CurrentRow.DataBoundItem;
+
+                DialogResult respuesta = MessageBox.Show("ELIMINAR CATEGORIA", "ELIMINAR", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    datosMarca.eliminar(auxMar.id);
+                    MessageBox.Show("ELIMINADO");
+                }
+                else
+                {
+                    return;
+                }
+            }
+            cargar();
         }
     }
 }

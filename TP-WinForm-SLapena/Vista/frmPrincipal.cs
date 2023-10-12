@@ -53,5 +53,32 @@ namespace Vista
             marca.ShowDialog();
             cargarArticulos();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            articuloNegocio datos = new articuloNegocio();
+            Articulo artAux;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("ELIMINAR ARTICULO", "ELIMINAR", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    artAux = (Articulo)dgwArticulos.CurrentRow.DataBoundItem;
+                    datos.eliminar(artAux.id);
+                    cargarArticulos();
+                }
+                else
+                {
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

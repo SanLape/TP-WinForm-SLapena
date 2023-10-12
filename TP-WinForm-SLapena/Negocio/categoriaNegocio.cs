@@ -11,6 +11,7 @@ namespace Negocio
     {
         AccesoDatos datos = new AccesoDatos();
         List<Categoria> lista = new List<Categoria>();
+        private string consulta;
 
         public List<Categoria> listar()
         {
@@ -44,14 +45,34 @@ namespace Negocio
         }
         public void agregar(Categoria nueva)
         {
-            string consutla = "INSERT INTO CATEGORIAS(Descripcion) VALUES (@Descripcion)";
+            consulta = "INSERT INTO CATEGORIAS(Descripcion) VALUES (@Descripcion)";
 
             try
             {
-                datos.setConsulta(consutla);
+                datos.setConsulta(consulta);
 
                 datos.setParametro("@Descripcion", nueva.nombre);
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            consulta = "DELETE FROM CATEGORIAS WHERE id = @id";
+
+            try
+            {
+                datos.setConsulta(consulta);
+                datos.setParametro("@id", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
