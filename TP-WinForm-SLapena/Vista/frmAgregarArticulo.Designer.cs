@@ -41,7 +41,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCandelar = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txbNombre = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblCodigo
@@ -157,19 +157,19 @@
             this.lblNombre.TabIndex = 12;
             this.lblNombre.Text = "NOMBRE:";
             // 
-            // txtNombre
+            // txbNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(138, 78);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(161, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txbNombre.Location = new System.Drawing.Point(138, 78);
+            this.txbNombre.Name = "txbNombre";
+            this.txbNombre.Size = new System.Drawing.Size(161, 20);
+            this.txbNombre.TabIndex = 1;
             // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 450);
-            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txbNombre);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.btnCandelar);
             this.Controls.Add(this.btnAgregar);
@@ -206,6 +206,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCandelar;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txbNombre;
     }
 }

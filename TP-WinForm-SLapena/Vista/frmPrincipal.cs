@@ -80,5 +80,15 @@ namespace Vista
                 throw ex;
             }
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo artAux;
+            artAux = (Articulo)dgwArticulos.CurrentRow.DataBoundItem;
+
+            frmAgregarArticulo modificar = new frmAgregarArticulo(artAux);
+            modificar.ShowDialog();
+            cargarArticulos();
+        }
     }
 }

@@ -75,7 +75,6 @@ namespace Vista
                 {
                     datosCat.agregar(catNueva);
                     MessageBox.Show("AGREGADA");
-                    cargar();
                 }
                 catch (Exception ex)
                 {
@@ -92,7 +91,6 @@ namespace Vista
                 {
                     datosMarca.agregar(marNueva);
                     MessageBox.Show("AGREGADA");
-                    cargar();
                 }
                 catch (Exception ex)
                 {
@@ -100,6 +98,8 @@ namespace Vista
                     throw ex;
                 }
             }
+            txtAgregar.Text = "";
+            cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
