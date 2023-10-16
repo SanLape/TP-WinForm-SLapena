@@ -34,7 +34,9 @@
             this.btnMarcas = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.pBoxArticulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgwArticulos
@@ -47,6 +49,7 @@
             this.dgwArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwArticulos.Size = new System.Drawing.Size(776, 276);
             this.dgwArticulos.TabIndex = 0;
+            this.dgwArticulos.SelectionChanged += new System.EventHandler(this.dgwArticulos_SelectionChanged);
             // 
             // btnAgregar
             // 
@@ -98,11 +101,21 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // pBoxArticulo
+            // 
+            this.pBoxArticulo.Location = new System.Drawing.Point(794, 75);
+            this.pBoxArticulo.Name = "pBoxArticulo";
+            this.pBoxArticulo.Size = new System.Drawing.Size(353, 276);
+            this.pBoxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBoxArticulo.TabIndex = 6;
+            this.pBoxArticulo.TabStop = false;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 506);
+            this.Controls.Add(this.pBoxArticulo);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnMarcas);
@@ -113,6 +126,7 @@
             this.Text = "Articulos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxArticulo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,5 +139,6 @@
         private System.Windows.Forms.Button btnMarcas;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.PictureBox pBoxArticulo;
     }
 }

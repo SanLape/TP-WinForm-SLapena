@@ -15,6 +15,7 @@ namespace Vista
     public partial class frmPrincipal : Form
     {
         private List<Articulo> listaArticulos;
+        private List<imagen> listaImagen;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -23,8 +24,21 @@ namespace Vista
         public void cargarArticulos()
         {
             articuloNegocio articulo = new articuloNegocio();
-            listaArticulos = articulo.listar();
-            dgwArticulos.DataSource = listaArticulos;
+            imagenNegocio imgNeg = new imagenNegocio();
+
+            try
+            {
+                listaArticulos = articulo.listar();
+                dgwArticulos.DataSource = listaArticulos;
+
+                cargarImagen(listaArticulos[0]);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -89,6 +103,34 @@ namespace Vista
             frmAgregarArticulo modificar = new frmAgregarArticulo(artAux);
             modificar.ShowDialog();
             cargarArticulos();
+        }
+
+        private void dgwArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo art = (Articulo)dgwArticulos.CurrentRow.DataBoundItem;
+            cargarImagen(art);
+        }
+        private void cargarImagen(Articulo art)
+        {
+            imagenNegocio imgNeg = new imagenNegocio();
+            
+            try
+            {
+                 
+                listaImagen = imgNeg.listar(art);
+                int n = listaImagen.Count;
+                
+                for (int i = 0; i < n; i++)
+                {
+                    pBoxArticulo.Load(listaImagen[i].urlImagen);
+                }
+            }
+            catch (Exception)
+            {
+
+                pBoxArticulo.Load("https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg");
+            }
+
         }
     }
 }
